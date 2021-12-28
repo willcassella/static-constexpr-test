@@ -1,6 +1,6 @@
 CXX=clang++ -std=c++17
 NM=nm -C
-FILTER_SYMBOLS=grep -E ' (U|D|T|V) '
+FILTER_SYMBOLS=grep -E ' (U|D|T|V) ' | grep -v ' _'
 
 .DEFAULT_GOAL := analyze
 
@@ -28,6 +28,7 @@ analyze: main main.o foo.o libfoo.so main_shared
 	@echo
 	@echo "Key: U = undefined symbol, D = symbol defined in \"data\", T = symbol defined in \"text\", V = \"weak\" symbol"
 	@echo
+	@echo
 	@echo "Analysis of artifacts (static linking):"
 	@echo
 	@echo "foo.o:"
@@ -38,6 +39,7 @@ analyze: main main.o foo.o libfoo.so main_shared
 	@echo
 	@echo "Running 'main':"
 	@./main
+	@echo
 	@echo
 	@echo "Analysis of artifacts (dynamic linking):"
 	@echo
