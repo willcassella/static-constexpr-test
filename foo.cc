@@ -1,5 +1,7 @@
 #include "foo.h"
 
+double Foo::regular_static = 99.0;
+
 void increment() {
-    Foo::foo += 1.0;
+    Foo::static_inline += 1.0;
 }

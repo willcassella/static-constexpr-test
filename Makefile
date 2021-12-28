@@ -19,7 +19,7 @@ clean:
 analyze: main main.o foo.o
 	@echo
 	@echo "Analysis of artifacts:"
-	@echo "U = undefined symbol, T = \"text\" symbol, V = \"weak\" symbol, r = read-only symbol"
+	@echo "U = undefined symbol, D = symbol defined in \"data\", T = symbol defined in \"text\", V = \"weak\" symbol, r = read-only symbol"
 	@echo
 	@echo "foo.o:"
 	@$(NM) foo.o
