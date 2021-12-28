@@ -1,4 +1,10 @@
-struct Foo {
+#if defined(BUILD_SHARED) && defined(FOO_IMPL)
+#   define FOO_EXPORT __attribute__((visibility("default")))
+#else
+#   define FOO_EXPORT
+#endif
+
+struct FOO_EXPORT Foo {
     // New to C++17: inline contexpr non-integral variables without TU definition
     static constexpr double static_constexpr = 42.0;
 
@@ -10,4 +16,4 @@ struct Foo {
 };
 
 // Increments 'Foo::static_inline'
-void increment();
+void FOO_EXPORT increment();
